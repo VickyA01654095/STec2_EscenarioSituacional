@@ -67,7 +67,7 @@ class Producto_apartado(models.Model):
     vendedor = models.ForeignKey(Vendedor, on_delete=models.CASCADE)
     comprador = models.ForeignKey(Comprador, on_delete=models.CASCADE)
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
-    tiempo_apartado = models.DateTimeField(blank=False, null=True)
+    tiempo_apartado = models.TimeField(blank=False, null=True)
     precio = models.FloatField(blank=True,null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
