@@ -20,6 +20,29 @@ def contact(request):
 
   return render(request, 'contact.html')
 
+def carrito(request):
+  mydb = sqlite3.connect("FrutasVerduras.db")
+  curr = mydb.cursor()
+
+  productsQry = '''SELECT producto.nombre,  vendedor.nombre_comercio, producto.precio
+                  FROM producto_apartado INNER JOIN  vendedor, producto
+                  ON  producto_apartado.producto_id = producto.id 
+									AND producto_apartado.vendedor_id = vendedor.id
+									WHERE producto_apartado.comprador_id = 3'''
+
+  productsQry = curr.execute(productsQry)
+
+  list_products = []
+
+  for x in productsQry:
+    list_products.append([x[0], x[1], x[2]])
+    print(x[0], x[1], x[2])
+  
+  mydb.commit()
+  mydb.close()
+
+  return render(request, 'carrito.html', {'reservas': list_products})
+
 def getProductos(request):
   mydb = sqlite3.connect("FrutasVerduras.db")
   curr = mydb.cursor()

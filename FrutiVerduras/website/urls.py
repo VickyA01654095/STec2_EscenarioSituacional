@@ -10,5 +10,6 @@ urlpatterns=[
   path('categories', views.getProductos, name='productos'),
   path('about', views.ofertas, name='ofertas'),
   path('contact', views.contact, name='contact'),
+  path('cart', views.carrito, name='cart'),
   
 ]

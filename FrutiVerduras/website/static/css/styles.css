@@ -1,30 +1,10 @@
-.main_container {
-    display: flex; /* or inline-flex */
-    flex-direction: column;
-    align-items: center;
-    background-color: rgb(255, 255, 255, 0.7);
-    width: 100%;
-    height: 100%;
-}
 
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    height: 100vh;
-}
-
-.body_bg {
-    background-image: url("../img/fondo.jpeg");
-    background-position: center;
-    background-repeat: repeat;
-    background-size: cover;
-}
-
-.apartados {
+.fv_caja {
+    border-left: solid #f05e16 10px;
+    border-radius: 5px;
     width: 70%;
-    opacity: 1;
+    background-color:#e5e5e3;
+    margin: 10px auto;
+    padding: 10px 30px;
     text-align: left;
-    
 }

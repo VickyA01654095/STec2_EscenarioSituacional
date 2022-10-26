@@ -1,12 +1,14 @@
+{% load static %}
+
 <!DOCTYPE html>
 
 <!-- This site was created in Webflow. https://www.webflow.com -->
 <!-- Last Published: Wed Oct 26 2022 16:42:31 GMT+0000 (Coordinated Universal Time) -->
-<html data-wf-domain="juliettes-wondrous-site-0e4e04.webflow.io" data-wf-page="63584a67c49d136f9110c401" data-wf-site="63584a66c49d13654210c3fc" data-wf-status="1">
+<html data-wf-domain="juliettes-wondrous-site-0e4e04.webflow.io" data-wf-page="63584a67c49d134ad810c405" data-wf-site="63584a66c49d13654210c3fc" data-wf-status="1">
 
 <head>
     <meta charset="utf-8" />
-    <title>About | Escape Template</title>
+    <title>Contact | Escape Template</title>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="Webflow" name="generator" />
     <link href="https://uploads-ssl.webflow.com/63584a66c49d13654210c3fc/css/juliettes-wondrous-site-0e4e04.webflow.82e95f8c2.css" rel="stylesheet" type="text/css" />
@@ -20,33 +22,21 @@
     </script>
     <link href="https://uploads-ssl.webflow.com/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="https://uploads-ssl.webflow.com/img/webclip.png" rel="apple-touch-icon" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 
 <body>
     <div>
-        <div data-collapse="medium" data-animation="default" data-duration="400" style="opacity:0" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-hidden-main w-hidden-medium w-hidden-small w-hidden-tiny w-nav">
-            <div class="w-container">
-                <a href="#" class="logo w-nav-brand"></a>
-                <nav role="navigation" class="w-nav-menu">
-                    <a href="#" class="w-nav-link">Home</a>
-                    <a href="#" class="w-nav-link">About</a>
-                    <a href="#" class="w-nav-link">Contact</a></nav>
-                <div class="w-nav-button">
-                    <div class="w-icon-nav-menu"></div>
-                </div>
-            </div>
-        </div>
         <div data-collapse="tiny" data-animation="over-right" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
             <div class="w-container">
                 <a href="/" class="logo w-nav-brand">
                     <div class="long-text">Escape.</div>
                 </a>
-                <nav role="navigation" class="nav-menu w-nav-menu">
-                    <a href="/" class="nav-link w-nav-link">Home</a>
+                <nav role="navigation" class="nav-menu w-nav-menu"><a href="/" class="nav-link w-nav-link">Home</a>
                     <a href="/categories" class="nav-link w-nav-link">PRODUCTOS</a>
-                    <a href="/about" aria-current="page" class="nav-link w-nav-link w--current">oFERTAS</a>
+                    <a href="/about" class="nav-link w-nav-link">oFERTAS</a>
                     <a href="/contact" class="nav-link w-nav-link">ContactO</a>
-                    <a href="/cart" class="nav-link w-nav-link">Carrito</a>
+                    <a href="/cart" aria-current="page" class="nav-link w-nav-link w--current">Carrito</a>
                     <a href="#" class="close-x w-hidden-main w-hidden-medium w-hidden-small">×</a></nav>
                 <div class="menu-button w-hidden-main w-hidden-medium w-hidden-small w-clearfix w-nav-button">
                     <div class="menu-icon w-icon-nav-menu"></div>
@@ -54,27 +44,24 @@
                 </div>
             </div>
         </div>
-        <div class="inner-hero about-page wf-section">
-            <div class="w-container">
-                <h1 class="hero-header">Ofertas </h1>
+        <div class="inner-hero wf-section">
+            <div class="container">
+                <h1 class="hero-header">Carrito</h1>
             </div>
         </div>
         <div id="posts" class="main-section wf-section">
-            <div class="container-9 w-container"><img src="https://uploads-ssl.webflow.com/63584a66c49d13654210c3fc/6359564ce663cb7eadc0ed60_WhatsApp%20Image%202022-10-26%20at%2010.44.49%20AM.jpeg" loading="lazy" width="423" srcset="https://uploads-ssl.webflow.com/63584a66c49d13654210c3fc/6359564ce663cb7eadc0ed60_WhatsApp%20Image%202022-10-26%20at%2010.44.49%20AM-p-500.jpeg 500w, https://uploads-ssl.webflow.com/63584a66c49d13654210c3fc/6359564ce663cb7eadc0ed60_WhatsApp%20Image%202022-10-26%20at%2010.44.49%20AM-p-800.jpeg 800w" sizes="(max-width: 767px) 88vw, 423px" alt="" class="image" /></div>
+
+            {% for name, store, price in reservas %}
+            <div class="fv_caja">
+                <h3>{{name}}</h3>
+                <p>Precio: $ {{price}} <br>
+                Vendedor: {{store}} <br>
+                </p>
+            </div>
+            {% endfor %}
+
+
         </div>
-        <div class="section-9 wf-section">
-            <div class="container-10 w-container"><a href="#" class="button-3 w-button">Cebolla 1kg por $4.00</a></div>
-        </div>
-        <div class="section-6 wf-section"><img src="https://uploads-ssl.webflow.com/63584a66c49d13654210c3fc/6359564c8be29b0f3b1e01a0_WhatsApp%20Image%202022-10-26%20at%2010.44.50%20AM%20(1).jpeg" loading="lazy" width="414" srcset="https://uploads-ssl.webflow.com/63584a66c49d13654210c3fc/6359564c8be29b0f3b1e01a0_WhatsApp%20Image%202022-10-26%20at%2010.44.50%20AM%20(1)-p-500.jpeg 500w" sizes="(max-width: 479px) 100vw, 414px" alt="" />
-            <div>This is some text inside of a div block.</div>
-        </div>
-        <div class="section-10 wf-section"><a href="#" class="button-3 w-button">Mango, 5 por $20.00</a></div>
-        <div class="section-7 wf-section"><img src="https://uploads-ssl.webflow.com/63584a66c49d13654210c3fc/6359564c348d4d3e144dc781_WhatsApp%20Image%202022-10-26%20at%2010.44.50%20AM%20(2).jpeg" loading="lazy" width="406" srcset="https://uploads-ssl.webflow.com/63584a66c49d13654210c3fc/6359564c348d4d3e144dc781_WhatsApp%20Image%202022-10-26%20at%2010.44.50%20AM%20(2)-p-500.jpeg 500w" sizes="(max-width: 479px) 100vw, 406px" alt="" />
-            <div>This is some text inside of a div block.</div>
-        </div>
-        <div class="section-11 wf-section"><a href="#" class="button-3 w-button">Fresas 1kg por $10.00</a></div>
-        <div class="section-8 wf-section"><img src="https://uploads-ssl.webflow.com/63584a66c49d13654210c3fc/6359564c5aa28c1cc4686a6c_WhatsApp%20Image%202022-10-26%20at%2010.44.50%20AM.jpeg" loading="lazy" width="389" alt="" /></div>
-        <div class="section-12 wf-section"><a href="#" class="button-3 w-button">Naranjas 1kg por $15.00</a></div>
         <div class="main-section dark wf-section">
             <div class="w-container">
                 <div class="section-heading">
@@ -99,7 +86,7 @@
                                 <div class="long-text">Escape.</div>
                             </a>
                         </div>
-                        <div class="footer-links w-col w-col-8 w-col-small-8"><a href="/" class="footer-link">Home</a><a href="/categories" class="footer-link">Categories</a><a href="/about" aria-current="page" class="footer-link w--current">About</a><a href="/contact" class="footer-link">Contact</a></div>
+                        <div class="footer-links w-col w-col-8 w-col-small-8"><a href="/" class="footer-link">Home</a><a href="/categories" class="footer-link">Categories</a><a href="/about" class="footer-link">About</a><a href="/contact" aria-current="page" class="footer-link w--current">Contact</a></div>
                     </div>
                 </div>
             </div>
