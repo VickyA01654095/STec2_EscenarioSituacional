@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse, HttpResponseNotFound
-from .models import Vendedor, Comprador, Producto, Producto_apartado, Mensaje, Chat
 from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime as dtm
 from json import loads, dumps
@@ -11,22 +10,21 @@ from django.http import HttpResponse
 
 def index(request):
 
-  return HttpResponse("Hello Geeks")
+  return render(request, 'home.html')
 
-def test(request):
+def ofertas(request):
 
-  return render(request, 'testShowApartados.html')
+  return render(request, 'ofertas.html')
 
+def contact(request):
 
-def showApartados(request):
-  ## falta modificar 
-  mydb = sqlite3.connect("db.sqlite3")
+  return render(request, 'contact.html')
+
+def getProductos(request):
+  mydb = sqlite3.connect("FrutasVerduras.db")
   curr = mydb.cursor()
 
-  productsQry = '''SELECT Producto.nombre, Producto.precio, Producto.estado_actual 
-  FROM Producto INNER JOIN Producto_apartado
-  ON Producto_apartado.producto_id = Producto.id WHERE Producto_apartado.comprador_id = 1'''
-
+  productsQry = '''SELECT nombre, precio, id FROM producto'''
   productsQry = curr.execute(productsQry)
 
   list_products = []
@@ -37,41 +35,27 @@ def showApartados(request):
   mydb.commit()
   mydb.close()
 
-  return render(request, 'index.html', {'apartados': list_products})
+  return render(request, 'htmltest.html', {'products': list_products})
 
-def getProductos(request):
-  mydb = sqlite3.connect("db.sqlite3")
+
+def apartarProducto(request):
+  user_id = 3
+  product_id = request.GET.get('prod_id')
+  tiempo = "01:00"
+  date = dtm.now()
+
+  mydb = sqlite3.connect("FrutasVerduras.db")
   curr = mydb.cursor()
 
-  productsQry = '''SELECT nombre, precio, estado_actual, id FROM Producto'''
-  productsQry = curr.execute(productsQry)
+  product_info = '''SELECT vendedor_id, precio FROM producto WHERE id=?'''
+  product_info = curr.execute(product_info, (product_id,)).fetchall()
 
-  list_products = []
+  insertQry = '''INSERT INTO producto_apartado (vendedor_id,comprador_id,producto_id,tiempo_apartado,precio,created_at)
+        VALUES (?, ?, ?, ?, ?, ?);'''
+  insertQry = curr.execute(insertQry, (product_info[0][0],user_id,product_id,tiempo,product_info[0][1],date)).fetchall()
 
-  for x in productsQry:
-    list_products.append([x[0], x[1], x[2], x[3]])
-  
   mydb.commit()
   mydb.close()
-
-  return render(request, 'index.html', {'products': list_products})
-
-
-@csrf_exempt
-def apartarProducto(request):
-  user_id = 1
-  product_id = request.POST["prod_id"]
-  tiempo = "01:00"
-
-  user = Comprador.objects.get(pk=user_id)
-  prod = Producto.objects.get(pk=product_id)
-  
-  apartado = Producto_apartado.objects.create(vendedor=prod.vendedor, comprador=user,
-  producto=prod,tiempo_apartado=tiempo,precio=prod.precio)
-
-  apartado.save()
-
-  json = dumps({"msg": "producto apartado"})
 
   return redirect('productos')
 
